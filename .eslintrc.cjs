@@ -15,6 +15,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "semi": ["error", "never"],
-    "@typescript-eslint/semi": ["error", "never"]
+    "@typescript-eslint/semi": ["error", "never"],
+    "indent": ["error", 2] 
   },
 }
