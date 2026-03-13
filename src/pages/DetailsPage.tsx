@@ -1,8 +1,8 @@
+import DetailsTemplate from '../components/templates/DetailsTemplate'
+
 function DetailsPage() {
   return (
-    <div>
-      <h1>Details Page</h1>
-    </div>
+    <DetailsTemplate />
   )
 }
 

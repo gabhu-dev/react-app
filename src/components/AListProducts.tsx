@@ -6,9 +6,13 @@ function AListProducts() {
 
   return (
     <div>
-      {products.map((product) => (
-        <ACardProduct key={product.id} product={product} />
-      ))}
+      {!products?.length? (
+        <div>No hay productos</div>
+      ) : (
+        products.map((product) => (
+          <ACardProduct key={product.id} product={product} />
+        ))
+      )}
     </div>
   )
 }
