@@ -7,6 +7,8 @@ export interface IProduct {
   category: string
   images: string[]
   thumbnail: string
+  price: number
+  discountPercentage: number
 }
 
 export interface IProductsResponse extends IGlobalPagination {

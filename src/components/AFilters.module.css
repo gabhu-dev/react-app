@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
 .filters {
-  @apply flex items-center justify-between py-6 px-4 border-b border-gray-100;
+  @apply flex items-center justify-between py-6 px-10 border-b border-gray-100;
   background: linear-gradient(to right, #ffffff, #fafafa);
 }
 

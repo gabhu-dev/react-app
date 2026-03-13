@@ -6,7 +6,7 @@ function ACardProduct({ product }: { product: IProduct }) {
     <Link to={`/details/${product.id}`}>
       <img src={product.thumbnail} alt={product.title} />
       <h2>{product.title}</h2>
-      <p>{product.description}</p>
+      <p>{product.price}</p>
     </Link>
   )
 }
