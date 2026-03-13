@@ -4,7 +4,19 @@ import AButton from './AButton'
 import { ShoppingCart, Heart } from 'lucide-react'
 import styles from './ACardProduct.module.css'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { addFavorite } from '../store/slices/products'
+import { RootState } from '../store'
+
 function ACardProduct({ product }: { product: IProduct }) {
+  const dispatch = useDispatch()
+  const favorites = useSelector((state: RootState) => state.products.favorites)
+  const isFavorite = favorites.includes(product.id)
+
+  const handleFavorite = () => {
+    dispatch(addFavorite(product.id))
+  }
+
   return (
     <article className={styles.card}>
       <div className={styles.card__image_container}>
@@ -15,8 +27,12 @@ function ACardProduct({ product }: { product: IProduct }) {
             alt={product.title} 
           />
         </Link>
-        <button className={styles.card__favorite} aria-label="Add to favorites">
-          <Heart size={20} />
+        <button 
+          className={`${styles.card__favorite} ${isFavorite ? styles['card__favorite--active'] : ''}`} 
+          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+          onClick={handleFavorite}
+        >
+          <Heart size={20} fill={isFavorite ? "currentColor" : "none"} />
         </button>
       </div>
 

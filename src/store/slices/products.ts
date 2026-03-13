@@ -6,7 +6,8 @@ import productsService from '../../services/products'
 const initialState = {
   productsResponse: {} as IProductsResponse,
   categories: [] as string[],
-  selectedCategory: ''
+  selectedCategory: '',
+  favorites: JSON.parse(localStorage.getItem('favorites') || '[]') as number[]
 }
 
 export const getProducts = createAsyncThunk(
@@ -39,6 +40,15 @@ const productsSlice = createSlice({
   reducers: {
     setSelectedCategory: (state, action) => {
       state.selectedCategory = action.payload
+    },
+    addFavorite: (state, action: { payload: number }) => {
+      const id = action.payload
+      if (state.favorites.includes(id)) {
+        state.favorites = state.favorites.filter(favId => favId !== id)
+      } else {
+        state.favorites.push(id)
+      }
+      localStorage.setItem('favorites', JSON.stringify(state.favorites))
     }
   },
   extraReducers: (builder) => {
@@ -54,5 +64,5 @@ const productsSlice = createSlice({
   }
 })
 
-export const { setSelectedCategory } = productsSlice.actions
+export const { setSelectedCategory, addFavorite } = productsSlice.actions
 export default productsSlice.reducer
