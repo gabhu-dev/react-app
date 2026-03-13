@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch } from '../store/hooks'
 import { getProducts, setSearch as setSearchStore } from '../store/slices/products'
 import { Link } from 'react-router-dom'
+import { endWaitTyping } from '../utils/helpers'
 
 
 function ANavbar() {
@@ -13,7 +14,9 @@ function ANavbar() {
 
   useEffect(() => {
     dispatch(setSearchStore(search))
-    dispatch(getProducts({ search, page: 1 }))
+    endWaitTyping(() => {
+      dispatch(getProducts({ search, page: 1 }))
+    }, 500) // 500ms delay for a better feel, or 1000 as default in function
   }, [dispatch, search])
   return (
     <nav className={styles.navbar}>
