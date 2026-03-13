@@ -1,8 +1,14 @@
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
+import ANavbar from './components/ANavbar'
 
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <>
+      <ANavbar />
+      <RouterProvider router={router} />
+    </>
+  )
 }
 
 export default App
