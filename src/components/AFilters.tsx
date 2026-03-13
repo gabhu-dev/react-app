@@ -8,8 +8,8 @@ function AFilters() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getProducts({ search: '', page: 1 }))
-  }, [dispatch])
+    dispatch(getProducts({ search, page: 1 }))
+  }, [dispatch, search])
 
   return (
     <div>
