@@ -1,9 +1,7 @@
+import HomeTemplate from '../components/templates/HomeTemplate'
+
 function HomePage() {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  )
+  return <HomeTemplate />
 }
 
 export default HomePage
