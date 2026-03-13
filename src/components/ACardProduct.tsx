@@ -5,7 +5,7 @@ import { ShoppingCart, Heart } from 'lucide-react'
 import styles from './ACardProduct.module.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { addFavorite } from '../store/slices/products'
+import { addFavorite, addToCart } from '../store/slices/products'
 import { RootState } from '../store'
 
 function ACardProduct({ product }: { product: IProduct }) {
@@ -15,6 +15,10 @@ function ACardProduct({ product }: { product: IProduct }) {
 
   const handleFavorite = () => {
     dispatch(addFavorite(product.id))
+  }
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product))
   }
 
   return (
@@ -54,7 +58,7 @@ function ACardProduct({ product }: { product: IProduct }) {
 
         <div className={styles.card__footer}>
           <span className={styles.card__price}>${product.price}</span>
-          <AButton>
+          <AButton onClick={handleAddToCart}>
             <div className={styles.card__button_content}>
               <ShoppingCart size={18} />
               <span>Add</span>

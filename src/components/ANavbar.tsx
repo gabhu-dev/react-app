@@ -2,7 +2,7 @@ import styles from './ANavbar.module.css'
 import { ShoppingCart, Heart } from 'lucide-react'
 import AInputSearch from './AInputSearch'
 import { useState, useEffect } from 'react'
-import { useAppDispatch } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { getProducts, setSearch as setSearchStore } from '../store/slices/products'
 import { Link } from 'react-router-dom'
 import { endWaitTyping } from '../utils/helpers'
@@ -11,6 +11,8 @@ import { endWaitTyping } from '../utils/helpers'
 function ANavbar() {
   const [search, setSearch] = useState('')
   const dispatch = useAppDispatch()
+  const cart = useAppSelector(state => state.products.cart)
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0)
 
   useEffect(() => {
     dispatch(setSearchStore(search))
@@ -23,8 +25,9 @@ function ANavbar() {
       <Link to="/" className={styles.brand}>APP SHOP</Link>
       <AInputSearch value={search} onChange={setSearch} />
       <ul className={styles['navbar__icons']}>
-        <li>
+        <li className={styles['navbar__cart']}>
           <ShoppingCart size={24} />
+          {cartCount > 0 && <span className={styles['navbar__badge']}>{cartCount}</span>}
         </li>
         <li>
           <Link to="/favorites">

@@ -1,6 +1,6 @@
 // userSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { IProductsResponse } from '../../types/products'
+import { IProduct, IProductsResponse } from '../../types/products'
 import productsService from '../../services/products'
 
 const initialState = {
@@ -8,7 +8,8 @@ const initialState = {
   categories: [] as string[],
   selectedCategory: '',
   search: '',
-  favorites: JSON.parse(localStorage.getItem('favorites') || '[]') as number[]
+  favorites: JSON.parse(localStorage.getItem('favorites') || '[]') as number[],
+  cart: JSON.parse(localStorage.getItem('cart') || '[]') as { product: IProduct, quantity: number }[]
 }
 
 export const getProducts = createAsyncThunk(
@@ -53,6 +54,16 @@ const productsSlice = createSlice({
     },
     setSearch: (state, action) => {
       state.search = action.payload
+    },
+    addToCart: (state, action: { payload: IProduct }) => {
+      const product = action.payload
+      const item = state.cart.find(item => item.product.id === product.id)
+      if (item) {
+        item.quantity += 1
+      } else {
+        state.cart.push({ product, quantity: 1 })
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
   extraReducers: (builder) => {
@@ -76,5 +87,5 @@ const productsSlice = createSlice({
   }
 })
 
-export const { setSelectedCategory, addFavorite, setSearch } = productsSlice.actions
+export const { setSelectedCategory, addFavorite, setSearch, addToCart } = productsSlice.actions
 export default productsSlice.reducer
