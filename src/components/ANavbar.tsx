@@ -3,7 +3,7 @@ import { ShoppingCart, Heart } from 'lucide-react'
 import AInputSearch from './AInputSearch'
 import { useState, useEffect } from 'react'
 import { useAppDispatch } from '../store/hooks'
-import { getProducts } from '../store/slices/products'
+import { getProducts, setSearch as setSearchStore } from '../store/slices/products'
 import { Link } from 'react-router-dom'
 
 
@@ -12,6 +12,7 @@ function ANavbar() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
+    dispatch(setSearchStore(search))
     dispatch(getProducts({ search, page: 1 }))
   }, [dispatch, search])
   return (

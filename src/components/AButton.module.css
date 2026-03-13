@@ -4,6 +4,10 @@
   @apply px-4 py-2 bg-gray-950 text-white rounded-md cursor-pointer;
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
   @apply bg-gray-800;
+}
+
+.button:disabled {
+  @apply bg-gray-300 cursor-not-allowed text-gray-500;
 }
