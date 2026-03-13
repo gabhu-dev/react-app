@@ -17,6 +17,11 @@ class ProductsService {
     return fetch(`${APP_URL}/products/category/${category}`)
       .then(res => res.json())
   }
+
+  getListCategories(): Promise<string[]> {
+    return fetch(`${APP_URL}/products/category-list`)
+      .then(res => res.json())
+  }
 }
 
 const productsService = new ProductsService()

@@ -5,6 +5,8 @@ import productsService from '../../services/products'
 
 const initialState = {
   productsResponse: {} as IProductsResponse,
+  categories: [] as string[],
+  selectedCategory: ''
 }
 
 export const getProducts = createAsyncThunk(
@@ -15,15 +17,42 @@ export const getProducts = createAsyncThunk(
   }
 )
 
+export const getCategories = createAsyncThunk(
+  'products/getCategories',
+  async () => {
+    const response = await productsService.getListCategories()
+    return response
+  }
+)
+
+export const getProductsByCategory = createAsyncThunk(
+  'products/getProductsByCategory',
+  async (category: string) => {
+    const response = await productsService.getByCategory(category)
+    return response
+  }
+)
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getProducts.fulfilled, (state, action) => {
+      state.productsResponse = action.payload
+    })
+    builder.addCase(getCategories.fulfilled, (state, action) => {
+      state.categories = action.payload
+    })
+    builder.addCase(getProductsByCategory.fulfilled, (state, action) => {
       state.productsResponse = action.payload
     })
   }
 })
 
+export const { setSelectedCategory } = productsSlice.actions
 export default productsSlice.reducer

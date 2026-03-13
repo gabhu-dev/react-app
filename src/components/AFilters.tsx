@@ -1,20 +1,56 @@
-import AInputSearch from './AInputSearch'
-import { useState, useEffect } from 'react'
-import { useAppDispatch } from '../store/hooks'
-import { getProducts } from '../store/slices/products'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { getProducts, getCategories, getProductsByCategory, setSelectedCategory } from '../store/slices/products'
+import styles from './AFilters.module.css'
 
 function AFilters() {
-  const [search, setSearch] = useState('')
   const dispatch = useAppDispatch()
+  const { categories, selectedCategory } = useAppSelector(state => state.products)
 
   useEffect(() => {
-    dispatch(getProducts({ search, page: 1 }))
-  }, [dispatch, search])
+    dispatch(getCategories())
+  }, [dispatch])
+
+  useEffect(() => {
+    if (!selectedCategory) {
+      dispatch(getProducts({ search: '', page: 1 }))
+    }
+  }, [dispatch, selectedCategory])
+
+  const handleCategoryChange = (category: string) => {
+    dispatch(setSelectedCategory(category))
+    if (category) {
+      dispatch(getProductsByCategory(category))
+    } else {
+      dispatch(getProducts({ search: '', page: 1 }))
+    }
+  }
+
+  const title = selectedCategory 
+    ? selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1).replace('-', ' ') + ' Products'
+    : 'All Products'
 
   return (
-    <div>
-      Buscar
-      <AInputSearch value={search} onChange={setSearch} />
+    <div className={styles.filters}>
+      <h1 className={styles.filters__title}>{title}</h1>
+      
+      <div className={styles.filters__group}>
+        <div className={styles.filters__select_wrapper}>
+          <span className={styles.filters__label}>Categoría:</span>
+          <select 
+            className={styles.filters__select}
+            value={selectedCategory}
+            onChange={(e) => handleCategoryChange(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat.charAt(0).toUpperCase() + cat.slice(1).replace('-', ' ')}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
     </div>
   )
 }
