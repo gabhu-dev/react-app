@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import styles from './AButton.module.css'
 
 interface AButtonProps {
   children: ReactNode
@@ -6,7 +7,8 @@ interface AButtonProps {
 
 function AButton({ children }: AButtonProps) {
   return (
-    <button>{children}</button>
+    <button className={styles.button}>
+      {children}</button>
   )
 }
 

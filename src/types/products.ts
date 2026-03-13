@@ -9,6 +9,8 @@ export interface IProduct {
   thumbnail: string
   price: number
   discountPercentage: number
+  stock: number
+  tags: string[]
 }
 
 export interface IProductsResponse extends IGlobalPagination {
