@@ -4,6 +4,7 @@ import AInputSearch from './AInputSearch'
 import { useState, useEffect } from 'react'
 import { useAppDispatch } from '../store/hooks'
 import { getProducts } from '../store/slices/products'
+import { Link } from 'react-router-dom'
 
 
 function ANavbar() {
@@ -15,14 +16,16 @@ function ANavbar() {
   }, [dispatch, search])
   return (
     <nav className={styles.navbar}>
-      <span>APP SHOP</span>
+      <Link to="/" className={styles.brand}>APP SHOP</Link>
       <AInputSearch value={search} onChange={setSearch} />
       <ul className={styles['navbar__icons']}>
         <li>
           <ShoppingCart size={24} />
         </li>
         <li>
-          <Heart size={24} />
+          <Link to="/favorites">
+            <Heart size={24} />
+          </Link>
         </li>
 
         <img className={styles['navbar__avatar']} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar" />

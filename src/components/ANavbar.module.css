@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
 .navbar {
-  @apply px-10 py-5 flex items-center justify-between;
+  @apply fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 flex items-center justify-between z-50;
+}
+
+.brand {
+  @apply text-xl font-bold text-gray-900 no-underline;
 }
 
 .navbar__avatar {
