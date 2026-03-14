@@ -4,10 +4,6 @@
   @apply fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 px-10 flex items-center justify-between z-50;
 }
 
-.navbar__brand {
-  @apply text-xl font-bold text-gray-900 no-underline;
-}
-
 .navbar__avatar {
   @apply rounded-full size-8 object-cover;
 }

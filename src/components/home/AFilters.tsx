@@ -32,7 +32,7 @@ function AFilters() {
 
   return (
     <div className={styles.filters}>
-      <h1 className={styles.filters__title}>{title}</h1>
+      <h3 className={styles.filters__title}>{title}</h3>
       
       <div className={styles.filters__group}>
         <div className={styles.filters__select_wrapper}>

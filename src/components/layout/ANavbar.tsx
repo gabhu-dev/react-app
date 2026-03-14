@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { getProducts, setSearch as setSearchStore } from '../../store/slices/products'
 import { Link } from 'react-router-dom'
 import { endWaitTyping } from '../../utils/helpers'
+import ALogo from '../shared/ALogo'
 
 
 function ANavbar() {
@@ -24,7 +25,9 @@ function ANavbar() {
 
   return (
     <nav className={styles.navbar}>
-      <Link to="/" className={styles['navbar__brand']}>APP SHOP</Link>
+      <Link to="/">
+        <ALogo />
+      </Link>
       <AInputSearch value={search} onChange={setSearch} />
       <ul className={styles['navbar__icons']}>
         <li className={styles['navbar__cart']}>

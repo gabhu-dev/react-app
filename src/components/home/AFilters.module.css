@@ -1,13 +1,11 @@
 @import "tailwindcss";
 
 .filters {
-  @apply flex items-center justify-between py-6 px-10 border-b border-gray-100;
-  background: linear-gradient(to right, #ffffff, #fafafa);
+  @apply flex items-center justify-between py-6 px-10;
 }
 
 .filters__title {
-  @apply text-2xl font-bold text-gray-800;
-  letter-spacing: -0.02em;
+  @apply text-xl font-semibold text-gray-800;
 }
 
 .filters__group {
