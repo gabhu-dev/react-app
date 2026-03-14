@@ -1,11 +1,11 @@
 import styles from './ANavbar.module.css'
 import { ShoppingCart, Heart } from 'lucide-react'
-import AInputSearch from './AInputSearch'
+import AInputSearch from '../shared/AInputSearch'
 import { useState, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { getProducts, setSearch as setSearchStore } from '../store/slices/products'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { getProducts, setSearch as setSearchStore } from '../../store/slices/products'
 import { Link } from 'react-router-dom'
-import { endWaitTyping } from '../utils/helpers'
+import { endWaitTyping } from '../../utils/helpers'
 
 
 function ANavbar() {

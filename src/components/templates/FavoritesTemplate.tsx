@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../store/hooks'
-import AListProducts from '../AListProducts'
+import AListProducts from '../home/AListProducts'
 
 function FavoritesTemplate() {
   const { products } = useAppSelector((state) => state.products.productsResponse)

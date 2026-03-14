@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { getProducts, getCategories, getProductsByCategory, setSelectedCategory } from '../store/slices/products'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { getProducts, getCategories, getProductsByCategory, setSelectedCategory } from '../../store/slices/products'
 import styles from './AFilters.module.css'
 
 function AFilters() {

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import { IProduct } from '../types/products'
-import AButton from './AButton'
+import { IProduct } from '../../types/products'
+import AButton from '../shared/AButton'
 import { ShoppingCart, Heart } from 'lucide-react'
 import styles from './ACardProduct.module.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { addFavorite, addToCart } from '../store/slices/products'
-import { RootState } from '../store'
+import { addFavorite, addToCart } from '../../store/slices/products'
+import { RootState } from '../../store'
 
 function ACardProduct({ product }: { product: IProduct }) {
   const dispatch = useDispatch()

@@ -1,9 +1,9 @@
 import ACardProduct from './ACardProduct'
-import { useAppSelector, useAppDispatch } from '../store/hooks'
+import { useAppSelector, useAppDispatch } from '../../store/hooks'
 import styles from './AListProducts.module.css'
-import { IProduct } from '../types/products'
-import AButton from './AButton'
-import { getProducts } from '../store/slices/products'
+import { IProduct } from '../../types/products'
+import AButton from '../shared/AButton'
+import { getProducts } from '../../store/slices/products'
 
 interface AListProductsProps {
   products?: IProduct[]

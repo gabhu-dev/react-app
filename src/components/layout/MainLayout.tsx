@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import ANavbar from '../ANavbar'
+import ANavbar from './ANavbar'
 
 function MainLayout() {
   return (

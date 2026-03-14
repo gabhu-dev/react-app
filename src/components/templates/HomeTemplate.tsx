@@ -1,5 +1,5 @@
-import AFilters from '../AFilters'
-import AListProducts from '../AListProducts'
+import AFilters from '../home/AFilters'
+import AListProducts from '../home/AListProducts'
 
 function HomeTemplate() {
   return (

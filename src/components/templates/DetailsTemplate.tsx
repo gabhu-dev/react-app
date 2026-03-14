@@ -30,7 +30,7 @@ function DetailsTemplate() {
     <div>
       <Link to="/">Volver</Link>
       <h1>{product.title}</h1>
-      <img src={product.thumbnail} alt={product.title} width={300} />
+      <img src={product.images[0]} alt={product.title} width={300} />
       <p>{product.description}</p>
       <p>Categoría: {product.category}</p>
       <div>
@@ -42,4 +42,4 @@ function DetailsTemplate() {
   )
 }
 
-export default DetailsTemplate
+export default DetailsTemplate
