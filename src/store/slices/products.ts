@@ -8,6 +8,7 @@ const initialState = {
   categories: [] as string[],
   selectedCategory: '',
   search: '',
+  loading: false,
   favorites: JSON.parse(localStorage.getItem('favorites') || '[]') as number[],
   cart: JSON.parse(localStorage.getItem('cart') || '[]') as { product: IProduct, quantity: number }[]
 }
@@ -67,7 +68,11 @@ const productsSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
+    builder.addCase(getProducts.pending, (state) => {
+      state.loading = true
+    })
     builder.addCase(getProducts.fulfilled, (state, action) => {
+      state.loading = false
       const { products, ...pagination } = action.payload
       if (action.meta.arg.page === 1) {
         state.productsResponse = action.payload
@@ -78,11 +83,21 @@ const productsSlice = createSlice({
         }
       }
     })
+    builder.addCase(getProducts.rejected, (state) => {
+      state.loading = false
+    })
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.categories = action.payload
     })
+    builder.addCase(getProductsByCategory.pending, (state) => {
+      state.loading = true
+    })
     builder.addCase(getProductsByCategory.fulfilled, (state, action) => {
+      state.loading = false
       state.productsResponse = action.payload
+    })
+    builder.addCase(getProductsByCategory.rejected, (state) => {
+      state.loading = false
     })
   }
 })

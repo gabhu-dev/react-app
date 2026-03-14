@@ -4,6 +4,10 @@
   @apply px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6;
 }
 
-.pagination {
+.list__loading {
+  @apply flex items-center justify-center py-10 gap-3;
+}
+
+.list__pagination {
   @apply flex justify-center py-10;
 }

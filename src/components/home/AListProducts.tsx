@@ -1,9 +1,11 @@
+
 import ACardProduct from './ACardProduct'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
 import styles from './AListProducts.module.css'
 import { IProduct } from '../../types/products'
 import AButton from '../shared/AButton'
 import { getProducts } from '../../store/slices/products'
+import { Loader2 } from 'lucide-react'
 
 interface AListProductsProps {
   products?: IProduct[]
@@ -11,7 +13,7 @@ interface AListProductsProps {
 
 function AListProducts({ products: productsProp }: AListProductsProps) {
   const dispatch = useAppDispatch()
-  const { productsResponse, search } = useAppSelector((state) => state.products)
+  const { productsResponse, search, loading } = useAppSelector((state) => state.products)
   const { products: storeProducts, total, skip, limit } = productsResponse
 
   const products = productsProp ?? storeProducts
@@ -20,26 +22,33 @@ function AListProducts({ products: productsProp }: AListProductsProps) {
   const currentPage = (skip / limit) + 1
   const hasMore = skip + limit < total
 
-  const handleLoadMore = () => {
-    dispatch(getProducts({ search, page: currentPage + 1 }))
+  const handleLoadMore = async () => {
+    await dispatch(getProducts({ search, page: currentPage + 1 }))
   }
 
   return (
     <div>
       <div className={styles.list}>
-        {!products?.length ? (
-          <div>No hay productos</div>
+        {loading ? (
+          <div className={styles.list__loading}>
+            <Loader2 className={styles.loading_icon} size={18} />
+            Cargando productos...
+          </div>
         ) : (
-          products.map((product) => (
-            <ACardProduct key={product.id} product={product} />
-          ))
+          !products?.length ? (
+            <div>No hay productos</div>
+          ) : (
+            products.map((product) => (
+              <ACardProduct key={product.id} product={product} />
+            ))
+          )
         )}
       </div>
 
       {!isFavoritesView && products?.length > 0 && hasMore && (
-        <div className={styles.pagination}>
-          <AButton onClick={handleLoadMore}>
-            Cargar más
+        <div className={styles.list__pagination}>
+          <AButton onClick={handleLoadMore} ghost loading={loading}>
+            Cargar más productos
           </AButton>
         </div>
       )}
