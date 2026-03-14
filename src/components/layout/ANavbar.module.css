@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 .navbar {
-  @apply fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 flex items-center justify-between z-50;
+  @apply fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 px-10 flex items-center justify-between z-50;
 }
 
-.brand {
+.navbar__brand {
   @apply text-xl font-bold text-gray-900 no-underline;
 }
 
@@ -13,13 +13,14 @@
 }
 
 .navbar__icons {
-  @apply flex gap-5 items-center;
+  @apply flex gap-6 items-center;
 }
 
-.navbar__cart {
+.navbar__cart,
+.navbar__favorites {
   @apply relative flex items-center justify-center;
 }
 
 .navbar__badge {
-  @apply absolute -top-2 -right-2 bg-red-500 text-white text-[11px] font-bold h-5 w-5 flex items-center justify-center rounded-full;
+  @apply absolute -top-2 -right-2 bg-red-400 text-white text-xs font-bold h-5 w-5 flex items-center justify-center rounded-full;
 }

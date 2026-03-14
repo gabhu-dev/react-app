@@ -13,25 +13,28 @@ function ANavbar() {
   const dispatch = useAppDispatch()
   const cart = useAppSelector(state => state.products.cart)
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0)
+  const favoritesCount = useAppSelector(state => state.products.favorites.length)
 
   useEffect(() => {
     dispatch(setSearchStore(search))
     endWaitTyping(() => {
       dispatch(getProducts({ search, page: 1 }))
-    }, 500) // 500ms delay for a better feel, or 1000 as default in function
+    }, 500)
   }, [dispatch, search])
+
   return (
     <nav className={styles.navbar}>
-      <Link to="/" className={styles.brand}>APP SHOP</Link>
+      <Link to="/" className={styles['navbar__brand']}>APP SHOP</Link>
       <AInputSearch value={search} onChange={setSearch} />
       <ul className={styles['navbar__icons']}>
         <li className={styles['navbar__cart']}>
           <ShoppingCart size={24} />
           {cartCount > 0 && <span className={styles['navbar__badge']}>{cartCount}</span>}
         </li>
-        <li>
+        <li className={styles['navbar__favorites']}>
           <Link to="/favorites">
             <Heart size={24} />
+            {favoritesCount > 0 && <span className={styles['navbar__badge']}>{favoritesCount}</span>}
           </Link>
         </li>
 
