@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import productsService from '../../services/products'
 import { IProduct } from '../../types/products'
+import AProductSection from '../details/AProductSection'
 
 function DetailsTemplate() {
   const { id } = useParams()
@@ -27,18 +28,7 @@ function DetailsTemplate() {
   if (!product) return <div>Producto no encontrado</div>
 
   return (
-    <div>
-      <Link to="/">Volver</Link>
-      <h1>{product.title}</h1>
-      <img src={product.images[0]} alt={product.title} width={300} />
-      <p>{product.description}</p>
-      <p>Categoría: {product.category}</p>
-      <div>
-        {product.images.map((img, idx) => (
-          <img key={idx} src={img} alt="" width={100} />
-        ))}
-      </div>
-    </div>
+    <AProductSection product={product} />
   )
 }
 

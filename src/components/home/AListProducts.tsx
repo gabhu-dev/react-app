@@ -24,6 +24,10 @@ function AListProducts({ products: productsProp }: AListProductsProps) {
 
   const handleLoadMore = async () => {
     await dispatch(getProducts({ search, page: currentPage + 1 }))
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    })
   }
 
   return (

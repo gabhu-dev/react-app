@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+.product-gallery {
+  @apply flex flex-col gap-4;
+}
+
+.product-gallery__main {
+  @apply bg-zinc-50 rounded-xl overflow-hidden flex justify-center items-center aspect-square p-8;
+}
+
+.product-gallery__main-img {
+  @apply w-full h-full object-contain;
+}
+
+.product-gallery__thumbnails {
+  @apply flex gap-3 overflow-x-auto;
+}
+
+.product-gallery__thumbnail-btn {
+  @apply bg-zinc-50 border border-transparent rounded-lg w-20 h-20 p-2 cursor-pointer flex justify-center items-center shrink-0 transition-colors duration-200;
+}
+
+.product-gallery__thumbnail-btn--active {
+  @apply border-black;
+}
+
+.product-gallery__thumbnail-img {
+  @apply w-full h-full object-contain;
+}

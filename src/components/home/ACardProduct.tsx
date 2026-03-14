@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { IProduct } from '../../types/products'
 import AButton from '../shared/AButton'
+import ATag from '../shared/ATag'
 import { ShoppingCart, Heart } from 'lucide-react'
 import styles from './ACardProduct.module.css'
 
@@ -52,7 +53,7 @@ function ACardProduct({ product }: { product: IProduct }) {
 
         <div className={styles.card__tags}>
           {product.tags?.map(tag => (
-            <span key={tag} className={styles.card__tag}>{tag}</span>
+            <ATag key={tag}>{tag}</ATag>
           ))}
         </div>
 

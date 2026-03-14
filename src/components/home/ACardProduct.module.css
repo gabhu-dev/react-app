@@ -44,10 +44,6 @@
   @apply flex flex-wrap gap-2;
 }
 
-.card__tag {
-  @apply px-3 py-1 bg-gray-50 text-gray-500 text-xs font-medium rounded-md capitalize;
-}
-
 .card__footer {
   @apply mt-auto pt-4 flex items-center justify-between;
 }

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.tag {
+  @apply px-3 py-1 text-xs font-medium rounded-md capitalize inline-block;
+}
+
+.tag--default {
+  @apply bg-gray-50 text-gray-500;
+}
+
+.tag--red {
+  @apply bg-[#f7f6f2] text-red-600 font-bold text-sm;
+}

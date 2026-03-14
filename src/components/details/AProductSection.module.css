@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.product-section {
+  @apply max-w-7xl mx-auto p-8 bg-white;
+}
+
+.product-section__back {
+  @apply inline-block mb-8 text-indigo-500 no-underline font-medium py-2 transition-colors duration-200;
+}
+
+.product-section__back:hover {
+  @apply text-indigo-400;
+}
+
+.product-section__content {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-12;
+}

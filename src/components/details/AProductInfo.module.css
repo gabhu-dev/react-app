@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+.product-info {
+  @apply flex flex-col gap-6 py-4;
+}
+
+.product-info__header {
+  @apply flex flex-col gap-2;
+}
+
+.product-info__category-wrap {
+  @apply flex justify-between items-center text-indigo-500 text-sm font-medium capitalize;
+}
+
+.product-info__id {
+  @apply text-gray-400;
+}
+
+.product-info__title {
+  @apply text-3xl font-bold m-0 leading-tight;
+}
+
+.product-info__price-container {
+  @apply flex items-end gap-4;
+}
+
+.product-info__price {
+  @apply text-4xl font-bold text-black;
+}
+
+.product-info__section {
+  @apply flex flex-col gap-2;
+}
+
+.product-info__section-title {
+  @apply text-sm text-gray-800 m-0 font-semibold;
+}
+
+.product-info__section-title span {
+  @apply font-normal text-gray-500 ml-2;
+}
+
+.product-info__tags {
+  @apply flex flex-wrap gap-2;
+}
+
+.product-info__description {
+  @apply text-gray-600 leading-relaxed mt-4;
+}
